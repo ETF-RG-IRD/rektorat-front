@@ -1,18 +1,6 @@
 <main class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
     <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Upis</h1>
     <form>
-        <!-- <div class="mb-4">
-            <label for="fist_name">Ime: </label>
-            <input type="text" id="first_name" name="first_name" placeholder="Enter first name"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
-            />
-        </div>
-        <div class="mb-6">
-            <label for="last_name">Prezime: </label>
-            <input type="text" id="last_name" name="last_name" placeholder="Enter last name"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
-            />
-        </div> -->
         <div class="mb-6">
             <label for="last_name">Indeks: </label>
             <input type="text" id="index" name="index" placeholder="Enter uID (u formatu GGGG/BBBB)"
@@ -40,6 +28,12 @@
                 Prikaži upisane danas
             </button>
         </div> -->
-        
+        <div class="mb-6" *ngIf="is_admin">
+            <button type="submit"
+                class="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                (click)="admin_panel()">
+                Admin Panel
+            </button>
+        </div>
     </form>
 </main>

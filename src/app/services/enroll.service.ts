@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EnrollService {
-  uri: string = 'http://localhost:4000';
+  private uri: string = 'http://localhost:4000';
   constructor(private http: HttpClient) { }
 
   enroll(uid_: string, org_: string) {

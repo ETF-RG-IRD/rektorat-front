@@ -6,8 +6,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-  uri: string = 'http://localhost:4000';
+  private uri: string = 'http://localhost:4000';
+
   is_logged: boolean = false;
+  is_admin: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -20,7 +22,9 @@ export class LoginService {
     return this.http.post(`${this.uri}/login`, data).subscribe((response: any) => {
       if(response) {
         this.is_logged = true;
-        console.log('Login')
+
+        if(response.admin) 
+          this.is_admin = true;
         
         this.router.navigate(['/enroll'])
       }
@@ -29,5 +33,9 @@ export class LoginService {
 
   is_authenticated(): boolean {
     return this.is_logged;
+  }
+
+  is_administrator(): boolean {
+    return this.is_admin;
   }
 }

@@ -1,0 +1,23 @@
+<main class="bg-white p-8 rounded-lg shadow-xl w-full">
+    <table class="min-w-full bg-white">
+        <thead>
+            <tr>
+                <th class="py-2 px-4 border-b">Username</th>
+                <th class="py-2 px-4 border-b">Organization</th>
+                <th class="py-2 px-4 border-b">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of all_requests" class="text-center">
+                <td class="py-2 px-4 border-b">{{ request.username }}</td>
+                <td class="py-2 px-4 border-b">{{ request.org }}</td>
+                <td class="py-2 px-4 border-b">
+                    <button (click)="approve_request(request)"
+                        class="bg-green-500 text-white px-4 py-2 rounded mr-2">Approve</button>
+                    <button (click)="decline_request(request)"
+                        class="bg-red-500 text-white px-4 py-2 rounded">Decline</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
