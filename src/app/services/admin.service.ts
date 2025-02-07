@@ -12,6 +12,16 @@ export class AdminService {
 
   requests: RegRequest[] = []
 
+  accept_request(UUID: string) {
+    const data = {'uuid': UUID};
+    return this.http.post(`${this.uri}/admin/approve`, data);
+  }
+  
+  decline_request(UUID: string) {
+    const data = {'uuid': UUID};
+    return this.http.post(`${this.uri}/admin/decline`, data);
+  }
+
   get_all_requests(): Observable<RegRequest[]> {
     return this.http.get<RegRequest[]>(`${this.uri}/admin`);
   }

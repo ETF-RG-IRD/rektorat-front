@@ -19,13 +19,27 @@ export class EnrollService {
      * TODO: Make modal window from this alert!
      */
     this.http.post(`${this.uri}/enroll/add`, data).subscribe((response: any) => {
-      if(response){
-        if(response.new) {
+      if (response) {
+        if (response.new) {
           alert(`Nov student evidentiran sa indeksom ${response.uid} sa fakulteta ${response.org}. Datuma ${response.last_seen}`)
         }
         else {
           alert(`Student pronađen sa indeksom ${response.uid} sa fakulteta ${response.org}. Poslednji put viđen ${response.last_seen}`)
         }
+      }
+    })
+  }
+
+  check(uid_: string, org_: string) {
+    const data = {
+      'uid': uid_,
+      'org': org_
+    }
+
+
+    this.http.post(`${this.uri}/enroll/check`, data).subscribe((response: any)  => {
+      if (response) {
+        alert(response.message);
       }
     })
   }
