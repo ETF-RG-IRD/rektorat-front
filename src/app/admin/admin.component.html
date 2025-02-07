@@ -12,10 +12,10 @@
                 <td class="py-2 px-4 border-b">{{ request.username }}</td>
                 <td class="py-2 px-4 border-b">{{ request.org }}</td>
                 <td class="py-2 px-4 border-b">
-                    <button (click)="approve_request(request)"
-                        class="bg-green-500 text-white px-4 py-2 rounded mr-2">Approve</button>
-                    <button (click)="decline_request(request)"
-                        class="bg-red-500 text-white px-4 py-2 rounded">Decline</button>
+                    <button type="submit" (click)="approve_request(request.UUID.toString())"
+                        class="bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded mr-2">Approve</button>
+                    <button type="submit" (click)="decline_request(request.UUID.toString())"
+                        class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded">Decline</button>
                 </td>
             </tr>
         </tbody>

@@ -32,11 +32,43 @@ export class AdminComponent implements OnInit {
   /**
    * TODO: Finish this on the front & back
    */
-  approve_request(request: RegRequest): void {
-    console.log('Approved:', request);
+  approve_request(UUID: string): void {
+    this.admin_service.accept_request(UUID).subscribe((data) => {
+      if (data) {
+        alert('Uspešno prihvaćen nalog!')
+        this.admin_service.get_all_requests().subscribe({
+          next: (data: any) => {
+            this.all_requests = data.requests as RegRequest[]; // Assign the fetched data to all_requests
+            console.log('Fetched requests:', this.all_requests);
+          },
+          error: (error) => {
+            console.error('Error fetching requests:', error);
+          },
+          complete: () => {
+            console.log('Request completed');
+          }
+        });
+      }
+    })
   }
 
-  decline_request(request: RegRequest): void {
-    console.log('Declined:', request);
+  decline_request(UUID: string): void {
+    this.admin_service.decline_request(UUID).subscribe((data) => {
+      if (data) {
+        alert('Odbijen nalog!')
+        this.admin_service.get_all_requests().subscribe({
+          next: (data: any) => {
+            this.all_requests = data.requests as RegRequest[]; // Assign the fetched data to all_requests
+            console.log('Fetched requests:', this.all_requests);
+          },
+          error: (error) => {
+            console.error('Error fetching requests:', error);
+          },
+          complete: () => {
+            console.log('Request completed');
+          }
+        });
+      }
+    })
   }
 }
