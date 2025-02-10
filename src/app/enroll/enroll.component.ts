@@ -42,6 +42,15 @@ export class EnrollComponent implements OnInit {
     this.enroll_service.check(this.uid, this.org.toUpperCase());
   }
 
+  log_exit(): void {
+    if(!this.check_uid(this.uid)) {
+      alert('Indeks mora biti u formatu GGGG/BBBB ili u posebnom slučaju Višera SMER/BBBB');
+      return;
+    }
+
+    this.enroll_service.log_exit(this.uid, this.org.toUpperCase());
+  }
+
   admin_panel(): void {
     this.router.navigate(['/admin'])
   }
