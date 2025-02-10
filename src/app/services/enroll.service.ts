@@ -30,6 +30,19 @@ export class EnrollService {
     })
   }
 
+  log_exit(uid: string, org: string ) {
+    const data = {
+      'uid': uid,
+      'org': org
+    }
+
+    this.http.post(`${this.uri}/enroll/logout`, data).subscribe((response: any) =>{
+      if(response) {
+        alert('Evidentiran izlazak studenta!')
+      }
+    })
+  }
+
   check(uid_: string, org_: string) {
     const data = {
       'uid': uid_,
